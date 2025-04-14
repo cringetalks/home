@@ -1,59 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodeWave FM - Live Stream</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CringeTalk</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap">
   <style>
-    body {
-      background-color: #0f0f0f;
-      color: #ffffff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    * {
+      box-sizing: border-box;
       margin: 0;
-      padding: 30px;
+      padding: 0;
+    }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      text-align: center;
+      padding: 2px;
+      background: linear-gradient(to right, #00f2ff, #ff00c3);
+      color: black;
+      font-size: 30px;
+      letter-spacing: 2px;
+    }
+    main {
+      flex: 1;
+      padding: 1rem;
+    }
+    .video-player {
+      width: 70%;
+      height: 500px;
+      display: block;
+      margin: 2rem auto;
+      border-radius: 12px;
+      box-shadow: 0 0 25px #00f2ff;
+      object-fit: cover;
+    }
+    .video-list iframe {
+      width: 100%;
+      height: 300px;
+      margin-bottom: 1rem;
+      border: none;
+    }
+    .crew-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
       text-align: center;
     }
-
-    h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
+    .crew-member {
+      background: #111;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00f2ff;
     }
-
-    p {
-      font-size: 1.1rem;
-      color: #cccccc;
-      margin-bottom: 40px;
+    .crew-member img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
     }
-
-    .video-box {
-      max-width: 900px;
-      margin: 0 auto;
-      background-color: #1e1e1e;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+    footer {
+      background: #111;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-top: 1px solid #333;
+      position: sticky;
+      bottom: 0;
+      z-index: 10;
     }
-
-    iframe {
-      width: 100%;
-      height: 480px;
-      border: none;
-      border-radius: 12px;
+    footer a {
+      color: #00f2ff;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    footer a:hover {
+      text-shadow: 0 0 8px #00f2ff;
     }
   </style>
 </head>
 <body>
-  <h1>📡 CringeTalks! FM</h1>
-  <p>Streaming Live - Tune in for tech shows, interviews, and community vibes!</p>
+  <header>CringeTalk</header>
 
-  <div class="video-box">
-    <!-- Paste your YouTube embed code below -->
-    <!-- Example: -->
-    <!-- <iframe src="https://www.youtube.com/embed/YOUR_STREAM_ID?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+  <main id="content">
+    <!-- Dynamic content will be loaded here -->
+  </main>
 
-    <!-- 🔻 Paste your actual embed code below this line 🔻 -->
-    <iframe width="424" height="240" src="https://www.youtube.com/embed/8rpnxxwZkLE" title="Trial For Blast" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    <!-- 🔺 Paste your actual embed code above this line 🔺 -->
-  </div>
+  <footer>
+    <a href="#" onclick="navigate('live')">📺 Live</a>
+    <a href="#" onclick="navigate('videos')">🎞️ Videos</a>
+    <a href="#" onclick="navigate('crew')">👥 Crew</a>
+    <a href="#" onclick="navigate('contest')">🏆 Contest</a>
+  </footer>
+
+  <script>
+    function navigate(page) {
+      const content = document.getElementById('content');
+      if (page === 'live') {
+        content.innerHTML = `
+          <iframe class="video-player" src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allowfullscreen></iframe>
+          <h2 style="text-align:center; margin-top:1rem">Live Stream</h2>
+          <p style="text-align:center">Enjoy our ongoing live sessions directly here.</p>
+        `;
+      } else if (page === 'videos') {
+        content.innerHTML = `
+          <h2>Previous Videos</h2>
+          <div class="video-list">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
+          </div>
+        `;
+      } else if (page === 'crew') {
+        content.innerHTML = `
+          <h2>Meet Our Crew</h2>
+          <div class="crew-grid">
+            <div class="crew-member">
+              <img src="https://via.placeholder.com/100" alt="Member 1">
+              <p>Member 1</p>
+              <a href="https://instagram.com" target="_blank">Instagram</a>
+            </div>
+            <div class="crew-member">
+              <img src="https://via.placeholder.com/100" alt="Member 2">
+              <p>Member 2</p>
+              <a href="https://instagram.com" target="_blank">Instagram</a>
+            </div>
+          </div>
+        `;
+      } else if (page === 'contest') {
+        content.innerHTML = `
+          <h2>Win a Contest</h2>
+          <p>Participate in our fun challenges and stand a chance to win exciting prizes! Stay tuned for upcoming contests.</p>
+        `;
+      }
+    }
+
+    // Load default page
+    navigate('live');
+  </script>
 </body>
 </html>
